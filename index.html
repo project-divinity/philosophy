@@ -3,171 +3,101 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Themis | Poetry, Philosophy & Greece</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<title>MENTAL.AI — Themis</title>
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400&display=swap');
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: radial-gradient(circle at top, #1a0033, #000000);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
 }
 
-body{
-    font-family:'Inter',sans-serif;
-    background:#08111f;
-    color:#e8edf7;
-    line-height:1.6;
+/* HEADER */
+header {
+    text-align: center;
+    padding: 20px;
 }
 
-/* HERO */
-header{
-    min-height:100vh;
-    background:
-    linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.65)),
-    url("https://images.unsplash.com/photo-1502134249126-9f3755a50d78?auto=format&fit=crop&w=1600&q=80")
-    center/cover no-repeat;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    padding:30px;
+header h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 2.3em;
+    background: linear-gradient(90deg, #c77dff, #7b2cbf, #e0aaff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-.hero-box{
-    max-width:850px;
+/* MODE SELECTOR */
+#modes {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    padding-bottom: 10px;
 }
 
-header h1{
-    font-family:'Cinzel',serif;
-    font-size:68px;
-    letter-spacing:5px;
-    color:#f8d36b;
-    margin-bottom:10px;
+.mode {
+    padding: 8px 14px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.1);
+    cursor: pointer;
+    font-size: 0.8em;
 }
 
-header h2{
-    font-size:22px;
-    font-weight:300;
-    color:#ffffff;
-    margin-bottom:20px;
+.active {
+    background: linear-gradient(90deg,#c77dff,#7b2cbf);
 }
 
-header p{
-    max-width:700px;
-    margin:auto;
-    color:#d8dee9;
+/* CHAT */
+#chat {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
 }
 
-.btn{
-    display:inline-block;
-    margin-top:28px;
-    padding:12px 24px;
-    border-radius:10px;
-    background:#f8d36b;
-    color:#111827;
-    text-decoration:none;
-    font-weight:700;
+.msg {
+    max-width: 75%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
 }
 
-/* SECTIONS */
-section{
-    max-width:1100px;
-    margin:auto;
-    padding:70px 20px;
+.user {
+    margin-left: auto;
+    background: rgba(255,255,255,0.1);
 }
 
-.section-title{
-    font-family:'Cinzel',serif;
-    color:#f8d36b;
-    font-size:34px;
-    margin-bottom:20px;
-    text-align:center;
+.bot {
+    background: rgba(199,125,255,0.15);
 }
 
-.lead{
-    text-align:center;
-    max-width:800px;
-    margin:0 auto 40px;
-    color:#c9d3e5;
+/* INPUT */
+#inputArea {
+    display: flex;
+    padding: 10px;
 }
 
-.grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:24px;
+input {
+    flex: 1;
+    padding: 12px;
+    border-radius: 20px;
+    border: none;
+    background: rgba(255,255,255,0.1);
+    color: white;
 }
 
-.card{
-    background:rgba(255,255,255,.04);
-    border:1px solid rgba(255,255,255,.08);
-    border-radius:18px;
-    padding:24px;
-}
-
-.card h3{
-    color:#f8d36b;
-    margin-bottom:10px;
-    font-size:22px;
-}
-
-.card p{
-    color:#d5deef;
-}
-
-/* IMAGE BAND */
-.band{
-    min-height:420px;
-    background:
-    linear-gradient(rgba(5,10,20,.35),rgba(5,10,20,.65)),
-    url("https://images.unsplash.com/photo-1532968961962-8a0cb3a2d4f5?auto=format&fit=crop&w=1600&q=80")
-    center/cover no-repeat;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    padding:30px;
-}
-
-.band h2{
-    font-family:'Cinzel',serif;
-    font-size:46px;
-    color:white;
-    max-width:850px;
-}
-
-/* QUOTE */
-.quote{
-    font-size:28px;
-    text-align:center;
-    font-style:italic;
-    color:#f8d36b;
-    max-width:900px;
-    margin:auto;
-}
-
-/* FOOTER */
-footer{
-    text-align:center;
-    padding:35px 20px;
-    color:#8ea0bd;
-    border-top:1px solid rgba(255,255,255,.08);
-}
-
-@media(max-width:768px){
-header h1{
-    font-size:48px;
-}
-header h2{
-    font-size:18px;
-}
-.band h2{
-    font-size:34px;
-}
-.section-title{
-    font-size:28px;
-}
+.send {
+    margin-left: 10px;
+    padding: 12px 18px;
+    border-radius: 20px;
+    cursor: pointer;
+    background: linear-gradient(90deg,#c77dff,#7b2cbf);
 }
 </style>
 </head>
@@ -175,102 +105,99 @@ header h2{
 <body>
 
 <header>
-    <div class="hero-box">
-        <h1>THEMIS</h1>
-        <h2>Poetry • Philosophy • Greece</h2>
-        <p>
-            A sanctuary where poetic feeling, philosophical thought, and the timeless wisdom of ancient Greece meet beneath the stars.
-        </p>
-        <a href="#explore" class="btn">Enter the World</a>
-    </div>
+<h1>MENTAL.AI — Themis ⚖️</h1>
 </header>
 
-<section id="explore">
-    <h2 class="section-title">Why Poetry?</h2>
-    <p class="lead">
-        Poetry gives language to what ordinary speech cannot hold—grief, wonder, longing, beauty, silence, memory.
-    </p>
-
-    <div class="grid">
-        <div class="card">
-            <h3>Emotion</h3>
-            <p>Poetry transforms pain, love, and hope into rhythm and image.</p>
-        </div>
-
-        <div class="card">
-            <h3>Identity</h3>
-            <p>Through verse, people discover who they are and what they carry.</p>
-        </div>
-
-        <div class="card">
-            <h3>Legacy</h3>
-            <p>Words survive generations. A poem can outlive its author.</p>
-        </div>
-    </div>
-</section>
-
-<div class="band">
-    <h2>“The unexamined life is not worth living.” — Socrates</h2>
+<div id="modes">
+<div class="mode active" onclick="setMode('reflect',this)">Reflect</div>
+<div class="mode" onclick="setMode('reframe',this)">Reframe</div>
+<div class="mode" onclick="setMode('plan',this)">Plan</div>
+<div class="mode" onclick="setMode('ground',this)">Ground</div>
+<div class="mode" onclick="setMode('journal',this)">Journal</div>
 </div>
 
-<section>
-    <h2 class="section-title">Why Philosophy?</h2>
-    <p class="lead">
-        Philosophy asks the deepest questions: What is truth? What is justice? How should we live?
-    </p>
+<div id="chat"></div>
 
-    <div class="grid">
-        <div class="card">
-            <h3>Wisdom</h3>
-            <p>It teaches disciplined thinking beyond impulse and illusion.</p>
-        </div>
+<div id="inputArea">
+<input id="input" placeholder="Speak your thoughts...">
+<div class="send" onclick="send()">Send</div>
+</div>
 
-        <div class="card">
-            <h3>Meaning</h3>
-            <p>It helps people shape purpose in a changing world.</p>
-        </div>
+<script>
+let mode = "reflect";
+let memory = [];
 
-        <div class="card">
-            <h3>Freedom</h3>
-            <p>To think clearly is to live more freely.</p>
-        </div>
-    </div>
-</section>
+const chat = document.getElementById("chat");
 
-<section>
-    <h2 class="section-title">Why Greece?</h2>
-    <p class="lead">
-        Ancient Greece gifted the world mythology, democracy, drama, logic, and enduring philosophical traditions.
-    </p>
+function setMode(m, el){
+    mode = m;
+    document.querySelectorAll(".mode").forEach(e=>e.classList.remove("active"));
+    el.classList.add("active");
+}
 
-    <div class="grid">
-        <div class="card">
-            <h3>Mythology</h3>
-            <p>Greek gods and heroes symbolize timeless human forces.</p>
-        </div>
+function addMsg(text,type){
+    const div = document.createElement("div");
+    div.className = "msg "+type;
+    div.innerText = text;
+    chat.appendChild(div);
+    chat.scrollTop = chat.scrollHeight;
+}
 
-        <div class="card">
-            <h3>Reason</h3>
-            <p>Thinkers like Plato and Aristotle shaped intellectual history.</p>
-        </div>
+addMsg("Themis ⚖️ here.\n\nI offer structured reflection, not therapy.\nIf things feel unsafe, please seek real-world support.\n\nChoose a mode above or speak freely.","bot");
 
-        <div class="card">
-            <h3>Beauty</h3>
-            <p>Greek art and architecture still define elegance and proportion.</p>
-        </div>
-    </div>
-</section>
+function send(){
+    const input = document.getElementById("input");
+    const text = input.value.trim();
+    if(!text) return;
 
-<section>
-    <div class="quote">
-        “Where poetry feels, philosophy asks, and Greece remembers.”
-    </div>
-</section>
+    addMsg(text,"user");
+    input.value="";
+    memory.push(text);
 
-<footer>
-    Contact us on Instagram: @divinitythemis <br><br>
-    © THEMIS — Poetry, Philosophy & Greece
-</footer>
+    setTimeout(()=>respond(text.toLowerCase()),400);
+}
+
+/* EMOTION DETECTION */
+function detectEmotion(t){
+    if(t.includes("stress")||t.includes("overwhelmed")) return "stress";
+    if(t.includes("sad")||t.includes("empty")) return "sad";
+    if(t.includes("overthinking")) return "overthinking";
+    if(t.includes("angry")) return "anger";
+    return "neutral";
+}
+
+/* RESPONDER */
+function respond(text){
+
+    // 🚨 crisis
+    if(text.includes("suicide")||text.includes("kill myself")||text.includes("die")){
+        addMsg("This matters deeply.\n\nPlease reach out to someone immediately—trusted person or professional.\nIf you're in danger, contact emergency services.\n\nI'm here with you.","bot");
+        return;
+    }
+
+    let emotion = detectEmotion(text);
+
+    if(mode==="reflect"){
+        addMsg("Let’s observe without judgment ⚖️\n\nWhat exactly triggered this feeling?\nWhat part of it is within your control?","bot");
+    }
+
+    else if(mode==="reframe"){
+        addMsg("Let’s shift perspective ⚖️\n\nIs there another interpretation of this situation that is less harmful?\nWhat would a neutral observer say?","bot");
+    }
+
+    else if(mode==="plan"){
+        addMsg("We move into action.\n\nStep 1: Define the problem clearly\nStep 2: Identify one small action\nStep 3: Execute today\n\nWhat is your first step?","bot");
+    }
+
+    else if(mode==="ground"){
+        addMsg("Return to the present.\n\nLook around: name 5 things you see\n4 things you feel\n3 things you hear\n\nYou are here. You are stable.","bot");
+    }
+
+    else if(mode==="journal"){
+        addMsg("Write freely:\n\nWhat am I feeling?\nWhy?\nWhat do I need right now?\n\nNo filter.","bot");
+    }
+}
+</script>
 
 </body>
 </html>
