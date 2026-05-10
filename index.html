@@ -3,10 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THEIA • CyberLaw.AI</title>
 
-<title>THEIA • Mind Escape</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
 
@@ -18,19 +17,17 @@
 
 body{
     background:#020617;
-    overflow:hidden;
     color:white;
     font-family:'Inter',sans-serif;
+    overflow:hidden;
 }
-
-/* BACKGROUND */
 
 body::before{
     content:"";
     position:fixed;
     inset:0;
     background:
-    radial-gradient(circle at top left,#00f0ff22,transparent 30%),
+    radial-gradient(circle at top left,#00f0ff22,transparent 25%),
     radial-gradient(circle at bottom right,#8b5cf622,transparent 30%),
     radial-gradient(circle at center,#2563eb22,transparent 40%);
     z-index:-3;
@@ -42,125 +39,157 @@ body::before{
     background-image:
     linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
-    background-size:40px 40px;
+    background-size:45px 45px;
     animation:gridMove 18s linear infinite;
     z-index:-2;
 }
 
 @keyframes gridMove{
-    from{
-        transform:translateY(0);
-    }
-    to{
-        transform:translateY(40px);
-    }
+    from{ transform:translateY(0); }
+    to{ transform:translateY(45px); }
 }
-
-/* MAIN */
 
 .container{
-    min-height:100vh;
     display:flex;
-    justify-content:center;
-    align-items:center;
-    padding:30px;
+    height:100vh;
 }
 
-.panel{
-    width:100%;
-    max-width:1000px;
+.sidebar{
+    width:320px;
     background:rgba(255,255,255,0.05);
-    border:1px solid rgba(255,255,255,0.08);
-    border-radius:35px;
-    padding:40px;
-    backdrop-filter:blur(20px);
-    box-shadow:0 0 60px rgba(0,240,255,0.15);
-    text-align:center;
+    border-right:1px solid rgba(255,255,255,0.08);
+    backdrop-filter:blur(18px);
+    padding:30px;
+    overflow-y:auto;
 }
 
 .logo{
     font-family:'Orbitron',sans-serif;
-    font-size:3rem;
+    font-size:2rem;
     color:#00f0ff;
+    text-shadow:0 0 18px #00f0ff;
     margin-bottom:12px;
-    text-shadow:0 0 20px #00f0ff;
 }
 
-.subtitle{
+.tagline{
     color:#cbd5e1;
     line-height:1.8;
-    margin-bottom:40px;
+    margin-bottom:35px;
 }
 
-/* GAME */
-
-.game-area{
-    position:relative;
-    width:100%;
-    height:450px;
-    border-radius:30px;
-    overflow:hidden;
-    background:rgba(255,255,255,0.03);
-    border:1px solid rgba(255,255,255,0.05);
-}
-
-.orb{
-    position:absolute;
-    width:70px;
-    height:70px;
-    border-radius:50%;
-    cursor:pointer;
-    transition:0.15s;
-    box-shadow:0 0 25px rgba(255,255,255,0.3);
-}
-
-.good{
-    background:radial-gradient(circle,#00f0ff,#2563eb);
-}
-
-.bad{
-    background:radial-gradient(circle,#ff4d6d,#7f1d1d);
-}
-
-/* STATS */
-
-.stats{
-    display:flex;
-    justify-content:center;
-    gap:30px;
-    margin-top:30px;
-    flex-wrap:wrap;
-}
-
-.stat{
+.panel{
     background:rgba(255,255,255,0.04);
-    border:1px solid rgba(255,255,255,0.07);
-    padding:18px 30px;
-    border-radius:18px;
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:24px;
+    padding:22px;
+    margin-bottom:20px;
 }
 
-.stat h3{
+.panel h3{
     color:#00f0ff;
-    margin-bottom:8px;
+    margin-bottom:14px;
 }
 
-/* TEXT */
+.panel p{
+    color:#dbe4f0;
+    line-height:1.7;
+    font-size:0.95rem;
+}
+
+.panel a{
+    display:inline-block;
+    margin-top:15px;
+    color:#8b5cf6;
+    text-decoration:none;
+    font-weight:700;
+}
+
+.chat-area{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+}
+
+.topbar{
+    padding:24px 35px;
+    border-bottom:1px solid rgba(255,255,255,0.08);
+    backdrop-filter:blur(12px);
+}
+
+.topbar h1{
+    font-family:'Orbitron',sans-serif;
+    color:#00f0ff;
+    font-size:1.9rem;
+}
+
+.topbar p{
+    color:#94a3b8;
+    margin-top:10px;
+}
+
+.chat-box{
+    flex:1;
+    overflow-y:auto;
+    padding:35px;
+    display:flex;
+    flex-direction:column;
+    gap:25px;
+}
 
 .message{
-    margin-top:30px;
-    font-size:1.1rem;
-    color:#dbe4f0;
-    line-height:1.8;
-    min-height:60px;
+    max-width:78%;
+    padding:20px 24px;
+    border-radius:24px;
+    line-height:1.9;
+    animation:fadeIn 0.4s ease;
 }
 
-/* BUTTON */
+.bot{
+    background:rgba(0,240,255,0.10);
+    border:1px solid rgba(0,240,255,0.18);
+    align-self:flex-start;
+}
 
-button{
-    margin-top:25px;
-    padding:16px 32px;
+.user{
+    background:rgba(139,92,246,0.16);
+    border:1px solid rgba(139,92,246,0.22);
+    align-self:flex-end;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(12px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.input-area{
+    display:flex;
+    gap:15px;
+    padding:24px;
+    border-top:1px solid rgba(255,255,255,0.08);
+    background:rgba(255,255,255,0.03);
+}
+
+.input-area input{
+    flex:1;
+    padding:18px;
     border:none;
-    border-radius:16px;
+    outline:none;
+    border-radius:18px;
+    background:rgba(255,255,255,0.05);
+    color:white;
+    font-size:1rem;
+}
+
+.input-area button{
+    padding:18px 32px;
+    border:none;
+    border-radius:18px;
     background:linear-gradient(135deg,#00f0ff,#8b5cf6);
     color:white;
     font-weight:700;
@@ -168,70 +197,121 @@ button{
     transition:0.3s;
 }
 
-button:hover{
-    transform:translateY(-5px) scale(1.03);
+.input-area button:hover{
+    transform:scale(1.04);
 }
 
-/* MOBILE */
+.warning{
+    color:#fca5a5;
+    margin-top:14px;
+    font-size:0.9rem;
+    line-height:1.7;
+}
 
-@media(max-width:700px){
+@media(max-width:900px){
 
-    .logo{
-        font-size:2.2rem;
+    .sidebar{
+        display:none;
     }
 
-    .game-area{
-        height:350px;
+    .message{
+        max-width:92%;
     }
 
 }
 
 </style>
 </head>
-
 <body>
 
 <div class="grid"></div>
 
 <div class="container">
 
-    <div class="panel">
+    <div class="sidebar">
 
-        <div class="logo">THEIA • Mind Escape</div>
+        <div class="logo">CyberLaw.AI</div>
 
-        <div class="subtitle">
-            Remove negative neural signals and collect calm energy spheres.
-            Train your focus, reaction speed, and emotional filtering system.
+        <div class="tagline">
+            THEIA's advanced cyber law intelligence system designed for cyber safety,
+            digital awareness, AI ethics, online fraud guidance,
+            privacy education, and cyber governance support.
         </div>
 
-        <div class="game-area" id="gameArea"></div>
+        <div class="panel">
+            <h3>Cyber Safety</h3>
+            <p>
+                Learn about phishing, hacking, scams, cyberbullying,
+                identity theft, privacy protection, and online security.
+            </p>
+        </div>
 
-        <div class="stats">
+        <div class="panel">
+            <h3>AI & Digital Law</h3>
+            <p>
+                Understand AI ethics, cyber regulations,
+                data privacy, and digital governance.
+            </p>
+        </div>
 
-            <div class="stat">
-                <h3>Calm Energy</h3>
-                <p id="score">0</p>
-            </div>
+        <div class="panel">
+            <h3>Emergency Reporting</h3>
+            <p>
+                For dangerous cybercrime situations,
+                CyberLaw.AI directs users to official Indian cybercrime resources.
+            </p>
 
-            <div class="stat">
-                <h3>Mental Noise</h3>
-                <p id="noise">100%</p>
-            </div>
+            <a href="https://cybercrime.gov.in/" target="_blank">
+                Open Government Cyber Portal →
+            </a>
+        </div>
 
-            <div class="stat">
-                <h3>Neural Stability</h3>
-                <p id="stability">0%</p>
+        <div class="warning">
+            CyberLaw.AI provides educational and informational guidance only.
+            For emergencies, legal action, or immediate danger,
+            contact official authorities.
+        </div>
+
+    </div>
+
+    <div class="chat-area">
+
+        <div class="topbar">
+
+            <h1>THEIA • CyberLaw.AI</h1>
+
+            <p>
+                AI-powered cyber law intelligence, awareness, and safety guidance system.
+            </p>
+
+        </div>
+
+        <div class="chat-box" id="chatBox">
+
+            <div class="message bot">
+                Welcome to CyberLaw.AI.
+                I can help you understand cyber safety, online scams,
+                cybercrime awareness, digital privacy, AI ethics,
+                online harassment issues, and cyber law guidance.
+                
+                Describe your situation or ask a question.
             </div>
 
         </div>
 
-        <div class="message" id="message">
-            Collect blue neural spheres and avoid red stress signals.
-        </div>
+        <div class="input-area">
 
-        <button onclick="startGame()">
-            Start Neural Session
-        </button>
+            <input
+                type="text"
+                id="userInput"
+                placeholder="Ask about cybercrime, scams, hacking, AI laws, online safety, privacy, cyberbullying, or digital rights..."
+            >
+
+            <button onclick="sendMessage()">
+                Analyze
+            </button>
+
+        </div>
 
     </div>
 
@@ -239,155 +319,128 @@ button:hover{
 
 <script>
 
-const gameArea = document.getElementById('gameArea');
+const chatBox = document.getElementById('chatBox');
 
-let score = 0;
-let noise = 100;
-let stability = 0;
+function addBotMessage(text){
 
-let gameRunning = false;
+    const botMessage = document.createElement('div');
 
-/* START */
+    botMessage.classList.add('message','bot');
 
-function startGame(){
+    botMessage.innerHTML = text;
 
-    if(gameRunning) return;
+    chatBox.appendChild(botMessage);
 
-    gameRunning = true;
-
-    spawnOrb();
+    chatBox.scrollTop = chatBox.scrollHeight;
 
 }
 
-/* CREATE ORBS */
+function sendMessage(){
 
-function spawnOrb(){
+    const input = document.getElementById('userInput');
 
-    if(!gameRunning) return;
+    const text = input.value.trim();
 
-    const orb = document.createElement('div');
+    if(text === '') return;
 
-    orb.classList.add('orb');
+    const userMessage = document.createElement('div');
 
-    const goodOrb = Math.random() > 0.3;
+    userMessage.classList.add('message','user');
 
-    if(goodOrb){
+    userMessage.innerText = text;
 
-        orb.classList.add('good');
+    chatBox.appendChild(userMessage);
 
-    }else{
-
-        orb.classList.add('bad');
-
-    }
-
-    const areaWidth = gameArea.clientWidth - 80;
-    const areaHeight = gameArea.clientHeight - 80;
-
-    const x = Math.random() * areaWidth;
-    const y = Math.random() * areaHeight;
-
-    orb.style.left = x + 'px';
-    orb.style.top = y + 'px';
-
-    gameArea.appendChild(orb);
-
-    /* CLICK */
-
-    orb.onclick = () => {
-
-        if(goodOrb){
-
-            score += 10;
-
-            noise -= 6;
-
-            stability += 7;
-
-            updateMessage(
-            'Positive neural energy absorbed. Mental balance improving.'
-            );
-
-        }else{
-
-            score -= 5;
-
-            noise += 8;
-
-            stability -= 6;
-
-            updateMessage(
-            'Stress signal detected. Refocus your awareness.'
-            );
-
-        }
-
-        if(noise < 0) noise = 0;
-        if(noise > 100) noise = 100;
-
-        if(stability < 0) stability = 0;
-        if(stability > 100) stability = 100;
-
-        updateStats();
-
-        orb.remove();
-
-    };
-
-    /* AUTO REMOVE */
+    input.value = '';
 
     setTimeout(() => {
 
-        if(orb.parentNode){
+        generateResponse(text.toLowerCase());
 
-            orb.remove();
-
-        }
-
-    },1500);
-
-    /* LOOP */
-
-    setTimeout(spawnOrb,700);
+    },700);
 
 }
 
-/* UPDATE */
+function generateResponse(input){
 
-function updateStats(){
+    if(input.includes('hack') || input.includes('hacked')){
 
-    document.getElementById('score').innerText = score;
-
-    document.getElementById('noise').innerText = noise + '%';
-
-    document.getElementById('stability').innerText =
-    stability + '%';
-
-}
-
-/* MESSAGE */
-
-function updateMessage(text){
-
-    document.getElementById('message').innerText = text;
-
-}
-
-/* ENDING */
-
-setInterval(() => {
-
-    if(stability >= 100){
-
-        updateMessage(
-        'Neural synchronization complete. Emotional clarity achieved.'
+        addBotMessage(
+        'Potential unauthorized access detected. Immediately change passwords, enable two-factor authentication, and disconnect suspicious devices. If financial or serious data theft occurred, report it to the official Indian Cyber Crime Portal:<br><br><a href="https://cybercrime.gov.in/" target="_blank" style="color:#00f0ff;">https://cybercrime.gov.in/</a>'
         );
-
-        gameRunning = false;
 
     }
 
-},1000);
+    else if(input.includes('scam') || input.includes('fraud')){
+
+        addBotMessage(
+        'Possible cyber fraud indicators identified. Avoid sharing OTPs, passwords, bank details, or verification codes. Preserve screenshots and transaction evidence. Report cyber fraud through the official cybercrime reporting system:<br><br><a href="https://cybercrime.gov.in/" target="_blank" style="color:#00f0ff;">Official Cyber Crime Portal</a>'
+        );
+
+    }
+
+    else if(input.includes('bully') || input.includes('harass') || input.includes('threat')){
+
+        addBotMessage(
+        'Online harassment and cyberbullying can violate cyber laws and digital safety protections. Save evidence such as screenshots, usernames, and messages. Avoid engaging with threatening accounts and consider reporting the issue through official authorities if serious.'
+        );
+
+    }
+
+    else if(input.includes('privacy') || input.includes('data')){
+
+        addBotMessage(
+        'Digital privacy protection is essential. Use strong passwords, enable two-factor authentication, limit unnecessary permissions, review app access regularly, and avoid sharing sensitive personal data on untrusted websites.'
+        );
+
+    }
+
+    else if(input.includes('ai') || input.includes('artificial intelligence')){
+
+        addBotMessage(
+        'Artificial Intelligence regulations are evolving globally. Key areas include AI ethics, data protection, misinformation prevention, algorithmic transparency, digital accountability, and responsible AI governance.'
+        );
+
+    }
+
+    else if(input.includes('phishing') || input.includes('otp')){
+
+        addBotMessage(
+        'Phishing attempts often impersonate banks, companies, or government systems to steal sensitive data. Never share OTPs, passwords, banking credentials, or personal identification details through suspicious links or messages.'
+        );
+
+    }
+
+    else if(input.includes('illegal') || input.includes('crime')){
+
+        addBotMessage(
+        'If a situation involves serious cybercrime, threats, financial theft, exploitation, or immediate danger, contact official authorities instead of relying only on AI guidance.<br><br><a href="https://cybercrime.gov.in/" target="_blank" style="color:#00f0ff;">Visit the Official Indian Cyber Crime Portal</a>'
+        );
+
+    }
+
+    else{
+
+        addBotMessage(
+        'CyberLaw.AI is analyzing your request through THEIA’s cyber intelligence framework. I can assist with cyber safety awareness, digital law education, privacy protection, online fraud awareness, AI ethics, cyber governance, and responsible technology guidance.'
+        );
+
+    }
+
+}
+
+/* ENTER KEY */
+
+document.getElementById('userInput')
+.addEventListener('keypress', function(event){
+
+    if(event.key === 'Enter'){
+
+        sendMessage();
+
+    }
+
+});
 
 </script>
 
