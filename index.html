@@ -3,200 +3,392 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MENTAL.AI — Themis</title>
+
+<title>THEIA • Mind Escape</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400&display=swap');
 
-body {
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-    background: radial-gradient(circle at top, #1a0033, #000000);
-    color: white;
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-/* HEADER */
-header {
-    text-align: center;
-    padding: 20px;
+body{
+    background:#020617;
+    overflow:hidden;
+    color:white;
+    font-family:'Inter',sans-serif;
 }
 
-header h1 {
-    font-family: 'Cinzel', serif;
-    font-size: 2.3em;
-    background: linear-gradient(90deg, #c77dff, #7b2cbf, #e0aaff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+/* BACKGROUND */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:
+    radial-gradient(circle at top left,#00f0ff22,transparent 30%),
+    radial-gradient(circle at bottom right,#8b5cf622,transparent 30%),
+    radial-gradient(circle at center,#2563eb22,transparent 40%);
+    z-index:-3;
 }
 
-/* MODE SELECTOR */
-#modes {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    flex-wrap: wrap;
-    padding-bottom: 10px;
+.grid{
+    position:fixed;
+    inset:0;
+    background-image:
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size:40px 40px;
+    animation:gridMove 18s linear infinite;
+    z-index:-2;
 }
 
-.mode {
-    padding: 8px 14px;
-    border-radius: 20px;
-    background: rgba(255,255,255,0.1);
-    cursor: pointer;
-    font-size: 0.8em;
+@keyframes gridMove{
+    from{
+        transform:translateY(0);
+    }
+    to{
+        transform:translateY(40px);
+    }
 }
 
-.active {
-    background: linear-gradient(90deg,#c77dff,#7b2cbf);
+/* MAIN */
+
+.container{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:30px;
 }
 
-/* CHAT */
-#chat {
-    flex: 1;
-    padding: 20px;
-    overflow-y: auto;
+.panel{
+    width:100%;
+    max-width:1000px;
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:35px;
+    padding:40px;
+    backdrop-filter:blur(20px);
+    box-shadow:0 0 60px rgba(0,240,255,0.15);
+    text-align:center;
 }
 
-.msg {
-    max-width: 75%;
-    padding: 12px;
-    margin: 10px 0;
-    border-radius: 15px;
-    backdrop-filter: blur(10px);
+.logo{
+    font-family:'Orbitron',sans-serif;
+    font-size:3rem;
+    color:#00f0ff;
+    margin-bottom:12px;
+    text-shadow:0 0 20px #00f0ff;
 }
 
-.user {
-    margin-left: auto;
-    background: rgba(255,255,255,0.1);
+.subtitle{
+    color:#cbd5e1;
+    line-height:1.8;
+    margin-bottom:40px;
 }
 
-.bot {
-    background: rgba(199,125,255,0.15);
+/* GAME */
+
+.game-area{
+    position:relative;
+    width:100%;
+    height:450px;
+    border-radius:30px;
+    overflow:hidden;
+    background:rgba(255,255,255,0.03);
+    border:1px solid rgba(255,255,255,0.05);
 }
 
-/* INPUT */
-#inputArea {
-    display: flex;
-    padding: 10px;
+.orb{
+    position:absolute;
+    width:70px;
+    height:70px;
+    border-radius:50%;
+    cursor:pointer;
+    transition:0.15s;
+    box-shadow:0 0 25px rgba(255,255,255,0.3);
 }
 
-input {
-    flex: 1;
-    padding: 12px;
-    border-radius: 20px;
-    border: none;
-    background: rgba(255,255,255,0.1);
-    color: white;
+.good{
+    background:radial-gradient(circle,#00f0ff,#2563eb);
 }
 
-.send {
-    margin-left: 10px;
-    padding: 12px 18px;
-    border-radius: 20px;
-    cursor: pointer;
-    background: linear-gradient(90deg,#c77dff,#7b2cbf);
+.bad{
+    background:radial-gradient(circle,#ff4d6d,#7f1d1d);
 }
+
+/* STATS */
+
+.stats{
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    margin-top:30px;
+    flex-wrap:wrap;
+}
+
+.stat{
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(255,255,255,0.07);
+    padding:18px 30px;
+    border-radius:18px;
+}
+
+.stat h3{
+    color:#00f0ff;
+    margin-bottom:8px;
+}
+
+/* TEXT */
+
+.message{
+    margin-top:30px;
+    font-size:1.1rem;
+    color:#dbe4f0;
+    line-height:1.8;
+    min-height:60px;
+}
+
+/* BUTTON */
+
+button{
+    margin-top:25px;
+    padding:16px 32px;
+    border:none;
+    border-radius:16px;
+    background:linear-gradient(135deg,#00f0ff,#8b5cf6);
+    color:white;
+    font-weight:700;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    transform:translateY(-5px) scale(1.03);
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+    .logo{
+        font-size:2.2rem;
+    }
+
+    .game-area{
+        height:350px;
+    }
+
+}
+
 </style>
 </head>
 
 <body>
 
-<header>
-<h1>MENTAL.AI — Themis ⚖️</h1>
-</header>
+<div class="grid"></div>
 
-<div id="modes">
-<div class="mode active" onclick="setMode('reflect',this)">Reflect</div>
-<div class="mode" onclick="setMode('reframe',this)">Reframe</div>
-<div class="mode" onclick="setMode('plan',this)">Plan</div>
-<div class="mode" onclick="setMode('ground',this)">Ground</div>
-<div class="mode" onclick="setMode('journal',this)">Journal</div>
-</div>
+<div class="container">
 
-<div id="chat"></div>
+    <div class="panel">
 
-<div id="inputArea">
-<input id="input" placeholder="Speak your thoughts...">
-<div class="send" onclick="send()">Send</div>
+        <div class="logo">THEIA • Mind Escape</div>
+
+        <div class="subtitle">
+            Remove negative neural signals and collect calm energy spheres.
+            Train your focus, reaction speed, and emotional filtering system.
+        </div>
+
+        <div class="game-area" id="gameArea"></div>
+
+        <div class="stats">
+
+            <div class="stat">
+                <h3>Calm Energy</h3>
+                <p id="score">0</p>
+            </div>
+
+            <div class="stat">
+                <h3>Mental Noise</h3>
+                <p id="noise">100%</p>
+            </div>
+
+            <div class="stat">
+                <h3>Neural Stability</h3>
+                <p id="stability">0%</p>
+            </div>
+
+        </div>
+
+        <div class="message" id="message">
+            Collect blue neural spheres and avoid red stress signals.
+        </div>
+
+        <button onclick="startGame()">
+            Start Neural Session
+        </button>
+
+    </div>
+
 </div>
 
 <script>
-let mode = "reflect";
-let memory = [];
 
-const chat = document.getElementById("chat");
+const gameArea = document.getElementById('gameArea');
 
-function setMode(m, el){
-    mode = m;
-    document.querySelectorAll(".mode").forEach(e=>e.classList.remove("active"));
-    el.classList.add("active");
+let score = 0;
+let noise = 100;
+let stability = 0;
+
+let gameRunning = false;
+
+/* START */
+
+function startGame(){
+
+    if(gameRunning) return;
+
+    gameRunning = true;
+
+    spawnOrb();
+
 }
 
-function addMsg(text,type){
-    const div = document.createElement("div");
-    div.className = "msg "+type;
-    div.innerText = text;
-    chat.appendChild(div);
-    chat.scrollTop = chat.scrollHeight;
+/* CREATE ORBS */
+
+function spawnOrb(){
+
+    if(!gameRunning) return;
+
+    const orb = document.createElement('div');
+
+    orb.classList.add('orb');
+
+    const goodOrb = Math.random() > 0.3;
+
+    if(goodOrb){
+
+        orb.classList.add('good');
+
+    }else{
+
+        orb.classList.add('bad');
+
+    }
+
+    const areaWidth = gameArea.clientWidth - 80;
+    const areaHeight = gameArea.clientHeight - 80;
+
+    const x = Math.random() * areaWidth;
+    const y = Math.random() * areaHeight;
+
+    orb.style.left = x + 'px';
+    orb.style.top = y + 'px';
+
+    gameArea.appendChild(orb);
+
+    /* CLICK */
+
+    orb.onclick = () => {
+
+        if(goodOrb){
+
+            score += 10;
+
+            noise -= 6;
+
+            stability += 7;
+
+            updateMessage(
+            'Positive neural energy absorbed. Mental balance improving.'
+            );
+
+        }else{
+
+            score -= 5;
+
+            noise += 8;
+
+            stability -= 6;
+
+            updateMessage(
+            'Stress signal detected. Refocus your awareness.'
+            );
+
+        }
+
+        if(noise < 0) noise = 0;
+        if(noise > 100) noise = 100;
+
+        if(stability < 0) stability = 0;
+        if(stability > 100) stability = 100;
+
+        updateStats();
+
+        orb.remove();
+
+    };
+
+    /* AUTO REMOVE */
+
+    setTimeout(() => {
+
+        if(orb.parentNode){
+
+            orb.remove();
+
+        }
+
+    },1500);
+
+    /* LOOP */
+
+    setTimeout(spawnOrb,700);
+
 }
 
-addMsg("Themis ⚖️ here.\n\nI offer structured reflection, not therapy.\nIf things feel unsafe, please seek real-world support.\n\nChoose a mode above or speak freely.","bot");
+/* UPDATE */
 
-function send(){
-    const input = document.getElementById("input");
-    const text = input.value.trim();
-    if(!text) return;
+function updateStats(){
 
-    addMsg(text,"user");
-    input.value="";
-    memory.push(text);
+    document.getElementById('score').innerText = score;
 
-    setTimeout(()=>respond(text.toLowerCase()),400);
+    document.getElementById('noise').innerText = noise + '%';
+
+    document.getElementById('stability').innerText =
+    stability + '%';
+
 }
 
-/* EMOTION DETECTION */
-function detectEmotion(t){
-    if(t.includes("stress")||t.includes("overwhelmed")) return "stress";
-    if(t.includes("sad")||t.includes("empty")) return "sad";
-    if(t.includes("overthinking")) return "overthinking";
-    if(t.includes("angry")) return "anger";
-    return "neutral";
+/* MESSAGE */
+
+function updateMessage(text){
+
+    document.getElementById('message').innerText = text;
+
 }
 
-/* RESPONDER */
-function respond(text){
+/* ENDING */
 
-    // 🚨 crisis
-    if(text.includes("suicide")||text.includes("kill myself")||text.includes("die")){
-        addMsg("This matters deeply.\n\nPlease reach out to someone immediately—trusted person or professional.\nIf you're in danger, contact emergency services.\n\nI'm here with you.","bot");
-        return;
+setInterval(() => {
+
+    if(stability >= 100){
+
+        updateMessage(
+        'Neural synchronization complete. Emotional clarity achieved.'
+        );
+
+        gameRunning = false;
+
     }
 
-    let emotion = detectEmotion(text);
+},1000);
 
-    if(mode==="reflect"){
-        addMsg("Let’s observe without judgment ⚖️\n\nWhat exactly triggered this feeling?\nWhat part of it is within your control?","bot");
-    }
-
-    else if(mode==="reframe"){
-        addMsg("Let’s shift perspective ⚖️\n\nIs there another interpretation of this situation that is less harmful?\nWhat would a neutral observer say?","bot");
-    }
-
-    else if(mode==="plan"){
-        addMsg("We move into action.\n\nStep 1: Define the problem clearly\nStep 2: Identify one small action\nStep 3: Execute today\n\nWhat is your first step?","bot");
-    }
-
-    else if(mode==="ground"){
-        addMsg("Return to the present.\n\nLook around: name 5 things you see\n4 things you feel\n3 things you hear\n\nYou are here. You are stable.","bot");
-    }
-
-    else if(mode==="journal"){
-        addMsg("Write freely:\n\nWhat am I feeling?\nWhy?\nWhat do I need right now?\n\nNo filter.","bot");
-    }
-}
 </script>
 
 </body>
